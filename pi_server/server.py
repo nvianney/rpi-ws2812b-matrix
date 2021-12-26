@@ -20,6 +20,16 @@ class LedMatrix:
     def set(self, row, col, color):
         self.data[self.width * row + col] = color
 
+class LedMapping:
+    def __init__(self):
+        self.data = {}
+
+    def set(self, row, col, index):
+        self.data[(row, col)] = index
+
+    def get(self, row, col):
+        return self.data[(row, col)]
+
 class Color:
     def __init__(self, r, g, b):
         self.r = r
@@ -69,9 +79,25 @@ class LedControl(led_control_pb2_grpc.LedControlServicer):
 
         return matrix
 
+    def mappingToLedMapping(self, mapping):
+        ledMapping = LedMapping()
+        data = mapping.data
+
+        assert len(data) % 3 == 0
+
+        for i in range(int(len(data) / 3)):
+            ledMapping.set(data[i * 3 + 0], data[i * 3 + 1], data[i * 3 + 2])
+
     def Initialize(self, request, context):
-        matrix = self.ledDataToMatrix(request)
-        #pixels = neopixel.NeoPixel(board.NEOPIXEL, 10, auto_write=False)
+        matrix = self.ledDataToMatrix(request.ledData)
+        mapping = self.mappingToLedMapping(request.mapping)
+
+        try:
+            return google.protobuf.wrappers_pb2.BoolValue(value=True)
+            #pixels = neopixel.NeoPixel(board.NEOPIXEL, 10, auto_write=False)
+        except:
+            traceback.print_exc()
+            return google.protobuf.wrappers_pb2.BoolValue(value=False)
 
 
     def WriteData(self, request, context):

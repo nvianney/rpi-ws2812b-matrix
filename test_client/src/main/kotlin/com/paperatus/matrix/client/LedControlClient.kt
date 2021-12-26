@@ -2,9 +2,9 @@ package com.paperatus.matrix.client
 
 import com.google.protobuf.ByteString
 import com.google.protobuf.kotlin.DslList
-import com.paperatus.matrix.proto.LedControlGrpcKt
-import com.paperatus.matrix.proto.LedData
-import com.paperatus.matrix.proto.ledData
+import com.paperatus.matrix.client.model.LedMapping
+import com.paperatus.matrix.client.model.LedMatrix
+import com.paperatus.matrix.proto.*
 import io.grpc.ManagedChannelBuilder
 import java.io.Closeable
 import java.util.concurrent.TimeUnit
@@ -27,9 +27,13 @@ class LedControlClient(address: String, port: Int) : Closeable {
 //        return bytes
 //    }
 
-    suspend fun initialize(matrix: LedMatrix) {
-        val request = matrix.asLedData()
-//        val response = stub.initialize(request)
+    suspend fun initialize(matrix: LedMatrix, ledMapping: LedMapping) {
+        val request = setup {
+            ledData = matrix.asLedData()
+            mapping = ledMapping.asMapping()
+        }
+        val response = stub.initialize(request)
+        println(response.value)
     }
 
     suspend fun sendLedMatrix(matrix: LedMatrix) {
@@ -43,6 +47,13 @@ class LedControlClient(address: String, port: Int) : Closeable {
             data += matrix.int.asList()
             width = matrix.width
             height = matrix.height
+        }
+    }
+
+    private fun LedMapping.asMapping(): Mapping {
+        val ledMapping = this
+        return mapping {
+            data += ledMapping.int.toList()
         }
     }
 
