@@ -1,2 +1,4 @@
 adafruit-circuitpython-neopixel==6.2.3
+grpcio==1.43.0
+grpcio-tools==1.43.0
 rpi-ws281x==4.3.1
