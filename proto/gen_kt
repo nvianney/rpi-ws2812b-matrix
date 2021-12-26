@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+
+# https://github.com/grpc/grpc-java/tree/v1.42.1/compiler
+# https://github.com/grpc/grpc-kotlin/tree/master/compiler
+
+OUT_DIR="jvm/"
+
+mkdir -p $OUT_DIR
+protoc -I=./ --java_out=$OUT_DIR --kotlin_out=$OUT_DIR *.proto
+protoc --plugin=protoc-gen-grpc-java=protoc-gen-grpc-java --grpc-java_out=$OUT_DIR --proto_path="./" "led_control.proto"
+protoc --plugin=protoc-gen-grpckt=protoc-gen-grpc-kotlin.sh --grpckt_out=$OUT_DIR --proto_path="./" "led_control.proto"

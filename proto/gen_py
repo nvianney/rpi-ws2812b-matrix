@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+OUT_DIR="py/"
+mkdir -p $OUT_DIR
+python3 -m grpc_tools.protoc -I ./ --python_out=$OUT_DIR --grpc_python_out=$OUT_DIR *.proto

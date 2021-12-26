@@ -1,0 +1,21 @@
+[versions]
+kotlin-coroutines = "1.6.0"
+
+protobuf-plugin = "0.8.18"
+protobuf = "3.19.1"
+grpc-kotlin = "1.2.0"
+grpc = "1.43.1"
+
+[libraries]
+grpc-kotlin-stub = { module = "io.grpc:grpc-kotlin-stub", version.ref = "grpc-kotlin"}
+grpc-protobuf = { module = "io.grpc:grpc-protobuf", version.ref = "grpc"}
+grpc-netty = { module = "io.grpc:grpc-netty", version.ref = "grpc"}
+grpc-stub = { module = "io.grpc:grpc-stub", version.ref = "grpc" }
+google-protobuf-kotlin = { module = "com.google.protobuf:protobuf-kotlin", version.ref = "protobuf" }
+google-protobuf-java-util = { module = "com.google.protobuf:protobuf-java-util", version.ref = "protobuf" }
+kotlin-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlin-coroutines" }
+
+[bundles]
+
+[plugins]
+google-protobuf = { id = "com.google.protobuf", version.ref = "protobuf-plugin" }
