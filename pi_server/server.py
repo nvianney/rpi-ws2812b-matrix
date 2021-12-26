@@ -5,8 +5,8 @@ import led_control_pb2_grpc
 import google
 import traceback
 
-#import board
-#import neopixel
+import board
+import neopixel
 
 class LedMatrix:
     def __init__(self, width, height):
@@ -51,6 +51,7 @@ class Color:
     def __str__(self):
         return "(%d, %d, %d)" % (self.r, self.g, self.b)
 
+
 class LedControl(led_control_pb2_grpc.LedControlServicer):
 
     # def mapToIntArray(self, byteString):
@@ -88,21 +89,35 @@ class LedControl(led_control_pb2_grpc.LedControlServicer):
         for i in range(int(len(data) / 3)):
             ledMapping.set(data[i * 3 + 0], data[i * 3 + 1], data[i * 3 + 2])
 
+        return ledMapping
+
+    def write(self):
+        for r in range(self.matrix.height):
+            for c in range(self.matrix.width):
+                idx = self.mapping.get(r, c)
+                self.pixels[idx] = self.matrix.get(r, c).tuple()
+
     def Initialize(self, request, context):
-        matrix = self.ledDataToMatrix(request.ledData)
-        mapping = self.mappingToLedMapping(request.mapping)
+        self.matrix = self.ledDataToMatrix(request.ledData)
+        self.mapping = self.mappingToLedMapping(request.mapping)
 
         try:
+            self.pixels = neopixel.NeoPixel(
+                board.D18,
+                self.matrix.width * self.matrix.height,
+                auto_write=False,
+                pixel_order = neopixel.GRB
+            )
             return google.protobuf.wrappers_pb2.BoolValue(value=True)
-            #pixels = neopixel.NeoPixel(board.NEOPIXEL, 10, auto_write=False)
+
         except:
             traceback.print_exc()
             return google.protobuf.wrappers_pb2.BoolValue(value=False)
 
 
     def WriteData(self, request, context):
-        matrix = self.ledDataToMatrix(request)
-        print(matrix.get(0, 0))
+        self.matrix = self.ledDataToMatrix(request)
+        print(self.matrix.get(0, 0))
 
         return google.protobuf.empty_pb2.Empty()
 
