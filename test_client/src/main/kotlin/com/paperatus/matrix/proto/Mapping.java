@@ -4,18 +4,18 @@
 package com.paperatus.matrix.proto;
 
 /**
- * Protobuf type {@code paperatus.LedData}
+ * Protobuf type {@code paperatus.Mapping}
  */
-public final class LedData extends
+public final class Mapping extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:paperatus.LedData)
-    LedDataOrBuilder {
+    // @@protoc_insertion_point(message_implements:paperatus.Mapping)
+    MappingOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use LedData.newBuilder() to construct.
-  private LedData(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use Mapping.newBuilder() to construct.
+  private Mapping(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private LedData() {
+  private Mapping() {
     data_ = emptyIntList();
   }
 
@@ -23,7 +23,7 @@ private static final long serialVersionUID = 0L;
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
-    return new LedData();
+    return new Mapping();
   }
 
   @java.lang.Override
@@ -31,7 +31,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private LedData(
+  private Mapping(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -71,16 +71,6 @@ private static final long serialVersionUID = 0L;
             input.popLimit(limit);
             break;
           }
-          case 16: {
-
-            width_ = input.readUInt32();
-            break;
-          }
-          case 24: {
-
-            height_ = input.readUInt32();
-            break;
-          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -105,15 +95,15 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.paperatus.matrix.proto.LedControlProto.internal_static_paperatus_LedData_descriptor;
+    return com.paperatus.matrix.proto.LedControlProto.internal_static_paperatus_Mapping_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.paperatus.matrix.proto.LedControlProto.internal_static_paperatus_LedData_fieldAccessorTable
+    return com.paperatus.matrix.proto.LedControlProto.internal_static_paperatus_Mapping_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.paperatus.matrix.proto.LedData.class, com.paperatus.matrix.proto.LedData.Builder.class);
+            com.paperatus.matrix.proto.Mapping.class, com.paperatus.matrix.proto.Mapping.Builder.class);
   }
 
   public static final int DATA_FIELD_NUMBER = 1;
@@ -144,28 +134,6 @@ private static final long serialVersionUID = 0L;
   }
   private int dataMemoizedSerializedSize = -1;
 
-  public static final int WIDTH_FIELD_NUMBER = 2;
-  private int width_;
-  /**
-   * <code>uint32 width = 2;</code>
-   * @return The width.
-   */
-  @java.lang.Override
-  public int getWidth() {
-    return width_;
-  }
-
-  public static final int HEIGHT_FIELD_NUMBER = 3;
-  private int height_;
-  /**
-   * <code>uint32 height = 3;</code>
-   * @return The height.
-   */
-  @java.lang.Override
-  public int getHeight() {
-    return height_;
-  }
-
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -187,12 +155,6 @@ private static final long serialVersionUID = 0L;
     }
     for (int i = 0; i < data_.size(); i++) {
       output.writeUInt32NoTag(data_.getInt(i));
-    }
-    if (width_ != 0) {
-      output.writeUInt32(2, width_);
-    }
-    if (height_ != 0) {
-      output.writeUInt32(3, height_);
     }
     unknownFields.writeTo(output);
   }
@@ -217,14 +179,6 @@ private static final long serialVersionUID = 0L;
       }
       dataMemoizedSerializedSize = dataSize;
     }
-    if (width_ != 0) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeUInt32Size(2, width_);
-    }
-    if (height_ != 0) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeUInt32Size(3, height_);
-    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -235,17 +189,13 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.paperatus.matrix.proto.LedData)) {
+    if (!(obj instanceof com.paperatus.matrix.proto.Mapping)) {
       return super.equals(obj);
     }
-    com.paperatus.matrix.proto.LedData other = (com.paperatus.matrix.proto.LedData) obj;
+    com.paperatus.matrix.proto.Mapping other = (com.paperatus.matrix.proto.Mapping) obj;
 
     if (!getDataList()
         .equals(other.getDataList())) return false;
-    if (getWidth()
-        != other.getWidth()) return false;
-    if (getHeight()
-        != other.getHeight()) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -261,78 +211,74 @@ private static final long serialVersionUID = 0L;
       hash = (37 * hash) + DATA_FIELD_NUMBER;
       hash = (53 * hash) + getDataList().hashCode();
     }
-    hash = (37 * hash) + WIDTH_FIELD_NUMBER;
-    hash = (53 * hash) + getWidth();
-    hash = (37 * hash) + HEIGHT_FIELD_NUMBER;
-    hash = (53 * hash) + getHeight();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static com.paperatus.matrix.proto.LedData parseFrom(
+  public static com.paperatus.matrix.proto.Mapping parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.paperatus.matrix.proto.LedData parseFrom(
+  public static com.paperatus.matrix.proto.Mapping parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.paperatus.matrix.proto.LedData parseFrom(
+  public static com.paperatus.matrix.proto.Mapping parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.paperatus.matrix.proto.LedData parseFrom(
+  public static com.paperatus.matrix.proto.Mapping parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.paperatus.matrix.proto.LedData parseFrom(byte[] data)
+  public static com.paperatus.matrix.proto.Mapping parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.paperatus.matrix.proto.LedData parseFrom(
+  public static com.paperatus.matrix.proto.Mapping parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.paperatus.matrix.proto.LedData parseFrom(java.io.InputStream input)
+  public static com.paperatus.matrix.proto.Mapping parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.paperatus.matrix.proto.LedData parseFrom(
+  public static com.paperatus.matrix.proto.Mapping parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.paperatus.matrix.proto.LedData parseDelimitedFrom(java.io.InputStream input)
+  public static com.paperatus.matrix.proto.Mapping parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static com.paperatus.matrix.proto.LedData parseDelimitedFrom(
+  public static com.paperatus.matrix.proto.Mapping parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.paperatus.matrix.proto.LedData parseFrom(
+  public static com.paperatus.matrix.proto.Mapping parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.paperatus.matrix.proto.LedData parseFrom(
+  public static com.paperatus.matrix.proto.Mapping parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -345,7 +291,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.paperatus.matrix.proto.LedData prototype) {
+  public static Builder newBuilder(com.paperatus.matrix.proto.Mapping prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -361,26 +307,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code paperatus.LedData}
+   * Protobuf type {@code paperatus.Mapping}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:paperatus.LedData)
-      com.paperatus.matrix.proto.LedDataOrBuilder {
+      // @@protoc_insertion_point(builder_implements:paperatus.Mapping)
+      com.paperatus.matrix.proto.MappingOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.paperatus.matrix.proto.LedControlProto.internal_static_paperatus_LedData_descriptor;
+      return com.paperatus.matrix.proto.LedControlProto.internal_static_paperatus_Mapping_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.paperatus.matrix.proto.LedControlProto.internal_static_paperatus_LedData_fieldAccessorTable
+      return com.paperatus.matrix.proto.LedControlProto.internal_static_paperatus_Mapping_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.paperatus.matrix.proto.LedData.class, com.paperatus.matrix.proto.LedData.Builder.class);
+              com.paperatus.matrix.proto.Mapping.class, com.paperatus.matrix.proto.Mapping.Builder.class);
     }
 
-    // Construct using com.paperatus.matrix.proto.LedData.newBuilder()
+    // Construct using com.paperatus.matrix.proto.Mapping.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -400,27 +346,23 @@ private static final long serialVersionUID = 0L;
       super.clear();
       data_ = emptyIntList();
       bitField0_ = (bitField0_ & ~0x00000001);
-      width_ = 0;
-
-      height_ = 0;
-
       return this;
     }
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.paperatus.matrix.proto.LedControlProto.internal_static_paperatus_LedData_descriptor;
+      return com.paperatus.matrix.proto.LedControlProto.internal_static_paperatus_Mapping_descriptor;
     }
 
     @java.lang.Override
-    public com.paperatus.matrix.proto.LedData getDefaultInstanceForType() {
-      return com.paperatus.matrix.proto.LedData.getDefaultInstance();
+    public com.paperatus.matrix.proto.Mapping getDefaultInstanceForType() {
+      return com.paperatus.matrix.proto.Mapping.getDefaultInstance();
     }
 
     @java.lang.Override
-    public com.paperatus.matrix.proto.LedData build() {
-      com.paperatus.matrix.proto.LedData result = buildPartial();
+    public com.paperatus.matrix.proto.Mapping build() {
+      com.paperatus.matrix.proto.Mapping result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -428,16 +370,14 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.paperatus.matrix.proto.LedData buildPartial() {
-      com.paperatus.matrix.proto.LedData result = new com.paperatus.matrix.proto.LedData(this);
+    public com.paperatus.matrix.proto.Mapping buildPartial() {
+      com.paperatus.matrix.proto.Mapping result = new com.paperatus.matrix.proto.Mapping(this);
       int from_bitField0_ = bitField0_;
       if (((bitField0_ & 0x00000001) != 0)) {
         data_.makeImmutable();
         bitField0_ = (bitField0_ & ~0x00000001);
       }
       result.data_ = data_;
-      result.width_ = width_;
-      result.height_ = height_;
       onBuilt();
       return result;
     }
@@ -476,16 +416,16 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.paperatus.matrix.proto.LedData) {
-        return mergeFrom((com.paperatus.matrix.proto.LedData)other);
+      if (other instanceof com.paperatus.matrix.proto.Mapping) {
+        return mergeFrom((com.paperatus.matrix.proto.Mapping)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.paperatus.matrix.proto.LedData other) {
-      if (other == com.paperatus.matrix.proto.LedData.getDefaultInstance()) return this;
+    public Builder mergeFrom(com.paperatus.matrix.proto.Mapping other) {
+      if (other == com.paperatus.matrix.proto.Mapping.getDefaultInstance()) return this;
       if (!other.data_.isEmpty()) {
         if (data_.isEmpty()) {
           data_ = other.data_;
@@ -495,12 +435,6 @@ private static final long serialVersionUID = 0L;
           data_.addAll(other.data_);
         }
         onChanged();
-      }
-      if (other.getWidth() != 0) {
-        setWidth(other.getWidth());
-      }
-      if (other.getHeight() != 0) {
-        setHeight(other.getHeight());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -517,11 +451,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      com.paperatus.matrix.proto.LedData parsedMessage = null;
+      com.paperatus.matrix.proto.Mapping parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (com.paperatus.matrix.proto.LedData) e.getUnfinishedMessage();
+        parsedMessage = (com.paperatus.matrix.proto.Mapping) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -610,68 +544,6 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
-
-    private int width_ ;
-    /**
-     * <code>uint32 width = 2;</code>
-     * @return The width.
-     */
-    @java.lang.Override
-    public int getWidth() {
-      return width_;
-    }
-    /**
-     * <code>uint32 width = 2;</code>
-     * @param value The width to set.
-     * @return This builder for chaining.
-     */
-    public Builder setWidth(int value) {
-      
-      width_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>uint32 width = 2;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearWidth() {
-      
-      width_ = 0;
-      onChanged();
-      return this;
-    }
-
-    private int height_ ;
-    /**
-     * <code>uint32 height = 3;</code>
-     * @return The height.
-     */
-    @java.lang.Override
-    public int getHeight() {
-      return height_;
-    }
-    /**
-     * <code>uint32 height = 3;</code>
-     * @param value The height to set.
-     * @return This builder for chaining.
-     */
-    public Builder setHeight(int value) {
-      
-      height_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>uint32 height = 3;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearHeight() {
-      
-      height_ = 0;
-      onChanged();
-      return this;
-    }
     @java.lang.Override
     public final Builder setUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -685,41 +557,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:paperatus.LedData)
+    // @@protoc_insertion_point(builder_scope:paperatus.Mapping)
   }
 
-  // @@protoc_insertion_point(class_scope:paperatus.LedData)
-  private static final com.paperatus.matrix.proto.LedData DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:paperatus.Mapping)
+  private static final com.paperatus.matrix.proto.Mapping DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.paperatus.matrix.proto.LedData();
+    DEFAULT_INSTANCE = new com.paperatus.matrix.proto.Mapping();
   }
 
-  public static com.paperatus.matrix.proto.LedData getDefaultInstance() {
+  public static com.paperatus.matrix.proto.Mapping getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<LedData>
-      PARSER = new com.google.protobuf.AbstractParser<LedData>() {
+  private static final com.google.protobuf.Parser<Mapping>
+      PARSER = new com.google.protobuf.AbstractParser<Mapping>() {
     @java.lang.Override
-    public LedData parsePartialFrom(
+    public Mapping parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new LedData(input, extensionRegistry);
+      return new Mapping(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<LedData> parser() {
+  public static com.google.protobuf.Parser<Mapping> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<LedData> getParserForType() {
+  public com.google.protobuf.Parser<Mapping> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.paperatus.matrix.proto.LedData getDefaultInstanceForType() {
+  public com.paperatus.matrix.proto.Mapping getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

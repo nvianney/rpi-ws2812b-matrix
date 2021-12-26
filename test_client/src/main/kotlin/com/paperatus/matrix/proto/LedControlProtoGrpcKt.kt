@@ -37,7 +37,7 @@ object LedControlGrpcKt {
   val serviceDescriptor: ServiceDescriptor
     get() = LedControlGrpc.getServiceDescriptor()
 
-  val initializeMethod: MethodDescriptor<LedData, BoolValue>
+  val initializeMethod: MethodDescriptor<Setup, BoolValue>
     @JvmStatic
     get() = LedControlGrpc.getInitializeMethod()
 
@@ -68,7 +68,7 @@ object LedControlGrpcKt {
      *
      * @return The single response from the server.
      */
-    suspend fun initialize(request: LedData, headers: Metadata = Metadata()): BoolValue = unaryRpc(
+    suspend fun initialize(request: Setup, headers: Metadata = Metadata()): BoolValue = unaryRpc(
       channel,
       LedControlGrpc.getInitializeMethod(),
       request,
@@ -112,7 +112,7 @@ object LedControlGrpcKt {
      *
      * @param request The request from the client.
      */
-    open suspend fun initialize(request: LedData): BoolValue = throw
+    open suspend fun initialize(request: Setup): BoolValue = throw
         StatusException(UNIMPLEMENTED.withDescription("Method paperatus.LedControl.Initialize is unimplemented"))
 
     /**

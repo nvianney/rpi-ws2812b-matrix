@@ -19,6 +19,16 @@ public final class LedControlProto {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_paperatus_LedData_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_paperatus_Setup_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_paperatus_Setup_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_paperatus_Mapping_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_paperatus_Mapping_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -30,13 +40,16 @@ public final class LedControlProto {
     java.lang.String[] descriptorData = {
       "\n\021led_control.proto\022\tpaperatus\032\033google/p" +
       "rotobuf/empty.proto\032\036google/protobuf/wra" +
-      "ppers.proto\"6\n\007LedData\022\014\n\004data\030\001 \001(\014\022\r\n\005" +
-      "width\030\002 \001(\r\022\016\n\006height\030\003 \001(\r2\207\001\n\nLedContr" +
-      "ol\022>\n\nInitialize\022\022.paperatus.LedData\032\032.g" +
-      "oogle.protobuf.BoolValue\"\000\0229\n\tWriteData\022" +
-      "\022.paperatus.LedData\032\026.google.protobuf.Em" +
-      "pty\"\000B/\n\032com.paperatus.matrix.protoB\017Led" +
-      "ControlProtoP\001b\006proto3"
+      "ppers.proto\"6\n\007LedData\022\014\n\004data\030\001 \003(\r\022\r\n\005" +
+      "width\030\002 \001(\r\022\016\n\006height\030\003 \001(\r\"Q\n\005Setup\022#\n\007" +
+      "ledData\030\001 \001(\0132\022.paperatus.LedData\022#\n\007map" +
+      "ping\030\002 \001(\0132\022.paperatus.Mapping\"\027\n\007Mappin" +
+      "g\022\014\n\004data\030\001 \003(\r2\205\001\n\nLedControl\022<\n\nInitia" +
+      "lize\022\020.paperatus.Setup\032\032.google.protobuf" +
+      ".BoolValue\"\000\0229\n\tWriteData\022\022.paperatus.Le" +
+      "dData\032\026.google.protobuf.Empty\"\000B/\n\032com.p" +
+      "aperatus.matrix.protoB\017LedControlProtoP\001" +
+      "b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -50,6 +63,18 @@ public final class LedControlProto {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_paperatus_LedData_descriptor,
         new java.lang.String[] { "Data", "Width", "Height", });
+    internal_static_paperatus_Setup_descriptor =
+      getDescriptor().getMessageTypes().get(1);
+    internal_static_paperatus_Setup_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_paperatus_Setup_descriptor,
+        new java.lang.String[] { "LedData", "Mapping", });
+    internal_static_paperatus_Mapping_descriptor =
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_paperatus_Mapping_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_paperatus_Mapping_descriptor,
+        new java.lang.String[] { "Data", });
     com.google.protobuf.EmptyProto.getDescriptor();
     com.google.protobuf.WrappersProto.getDescriptor();
   }

@@ -5,7 +5,8 @@ suspend fun main(array: Array<String>) {
     matrix[0, 0] = Color(255, 0, 0)
     LedControlClient("localhost", 50051).use { client ->
         with(client) {
-            initialize(matrix)
+//            initialize(matrix)
+            sendLedMatrix(matrix)
         }
     }
 }

@@ -4,23 +4,23 @@
 package com.paperatus.matrix.proto;
 
 @kotlin.jvm.JvmSynthetic
-public inline fun ledData(block: com.paperatus.matrix.proto.LedDataKt.Dsl.() -> kotlin.Unit): com.paperatus.matrix.proto.LedData =
-  com.paperatus.matrix.proto.LedDataKt.Dsl._create(com.paperatus.matrix.proto.LedData.newBuilder()).apply { block() }._build()
-public object LedDataKt {
+public inline fun mapping(block: com.paperatus.matrix.proto.MappingKt.Dsl.() -> kotlin.Unit): com.paperatus.matrix.proto.Mapping =
+  com.paperatus.matrix.proto.MappingKt.Dsl._create(com.paperatus.matrix.proto.Mapping.newBuilder()).apply { block() }._build()
+public object MappingKt {
   @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
   @com.google.protobuf.kotlin.ProtoDslMarker
   public class Dsl private constructor(
-    private val _builder: com.paperatus.matrix.proto.LedData.Builder
+    private val _builder: com.paperatus.matrix.proto.Mapping.Builder
   ) {
     public companion object {
       @kotlin.jvm.JvmSynthetic
       @kotlin.PublishedApi
-      internal fun _create(builder: com.paperatus.matrix.proto.LedData.Builder): Dsl = Dsl(builder)
+      internal fun _create(builder: com.paperatus.matrix.proto.Mapping.Builder): Dsl = Dsl(builder)
     }
 
     @kotlin.jvm.JvmSynthetic
     @kotlin.PublishedApi
-    internal fun _build(): com.paperatus.matrix.proto.LedData = _builder.build()
+    internal fun _build(): com.paperatus.matrix.proto.Mapping = _builder.build()
 
     /**
      * An uninstantiable, behaviorless type to represent the field in
@@ -86,42 +86,8 @@ public object LedDataKt {
     @kotlin.jvm.JvmName("clearData")
     public fun com.google.protobuf.kotlin.DslList<kotlin.Int, DataProxy>.clear() {
       _builder.clearData()
-    }
-    /**
-     * <code>uint32 width = 2;</code>
-     */
-    public var width: kotlin.Int
-      @JvmName("getWidth")
-      get() = _builder.getWidth()
-      @JvmName("setWidth")
-      set(value) {
-        _builder.setWidth(value)
-      }
-    /**
-     * <code>uint32 width = 2;</code>
-     */
-    public fun clearWidth() {
-      _builder.clearWidth()
-    }
-
-    /**
-     * <code>uint32 height = 3;</code>
-     */
-    public var height: kotlin.Int
-      @JvmName("getHeight")
-      get() = _builder.getHeight()
-      @JvmName("setHeight")
-      set(value) {
-        _builder.setHeight(value)
-      }
-    /**
-     * <code>uint32 height = 3;</code>
-     */
-    public fun clearHeight() {
-      _builder.clearHeight()
-    }
-  }
+    }}
 }
 @kotlin.jvm.JvmSynthetic
-public inline fun com.paperatus.matrix.proto.LedData.copy(block: com.paperatus.matrix.proto.LedDataKt.Dsl.() -> kotlin.Unit): com.paperatus.matrix.proto.LedData =
-  com.paperatus.matrix.proto.LedDataKt.Dsl._create(this.toBuilder()).apply { block() }._build()
+public inline fun com.paperatus.matrix.proto.Mapping.copy(block: com.paperatus.matrix.proto.MappingKt.Dsl.() -> kotlin.Unit): com.paperatus.matrix.proto.Mapping =
+  com.paperatus.matrix.proto.MappingKt.Dsl._create(this.toBuilder()).apply { block() }._build()

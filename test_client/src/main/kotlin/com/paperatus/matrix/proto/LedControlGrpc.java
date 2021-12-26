@@ -15,27 +15,27 @@ public final class LedControlGrpc {
   public static final String SERVICE_NAME = "paperatus.LedControl";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<com.paperatus.matrix.proto.LedData,
+  private static volatile io.grpc.MethodDescriptor<com.paperatus.matrix.proto.Setup,
       com.google.protobuf.BoolValue> getInitializeMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "Initialize",
-      requestType = com.paperatus.matrix.proto.LedData.class,
+      requestType = com.paperatus.matrix.proto.Setup.class,
       responseType = com.google.protobuf.BoolValue.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.paperatus.matrix.proto.LedData,
+  public static io.grpc.MethodDescriptor<com.paperatus.matrix.proto.Setup,
       com.google.protobuf.BoolValue> getInitializeMethod() {
-    io.grpc.MethodDescriptor<com.paperatus.matrix.proto.LedData, com.google.protobuf.BoolValue> getInitializeMethod;
+    io.grpc.MethodDescriptor<com.paperatus.matrix.proto.Setup, com.google.protobuf.BoolValue> getInitializeMethod;
     if ((getInitializeMethod = LedControlGrpc.getInitializeMethod) == null) {
       synchronized (LedControlGrpc.class) {
         if ((getInitializeMethod = LedControlGrpc.getInitializeMethod) == null) {
           LedControlGrpc.getInitializeMethod = getInitializeMethod =
-              io.grpc.MethodDescriptor.<com.paperatus.matrix.proto.LedData, com.google.protobuf.BoolValue>newBuilder()
+              io.grpc.MethodDescriptor.<com.paperatus.matrix.proto.Setup, com.google.protobuf.BoolValue>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "Initialize"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.paperatus.matrix.proto.LedData.getDefaultInstance()))
+                  com.paperatus.matrix.proto.Setup.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   com.google.protobuf.BoolValue.getDefaultInstance()))
               .setSchemaDescriptor(new LedControlMethodDescriptorSupplier("Initialize"))
@@ -127,7 +127,7 @@ public final class LedControlGrpc {
 
     /**
      */
-    public void initialize(com.paperatus.matrix.proto.LedData request,
+    public void initialize(com.paperatus.matrix.proto.Setup request,
         io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getInitializeMethod(), responseObserver);
     }
@@ -145,7 +145,7 @@ public final class LedControlGrpc {
             getInitializeMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
-                com.paperatus.matrix.proto.LedData,
+                com.paperatus.matrix.proto.Setup,
                 com.google.protobuf.BoolValue>(
                   this, METHODID_INITIALIZE)))
           .addMethod(
@@ -175,7 +175,7 @@ public final class LedControlGrpc {
 
     /**
      */
-    public void initialize(com.paperatus.matrix.proto.LedData request,
+    public void initialize(com.paperatus.matrix.proto.Setup request,
         io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getInitializeMethod(), getCallOptions()), request, responseObserver);
@@ -206,7 +206,7 @@ public final class LedControlGrpc {
 
     /**
      */
-    public com.google.protobuf.BoolValue initialize(com.paperatus.matrix.proto.LedData request) {
+    public com.google.protobuf.BoolValue initialize(com.paperatus.matrix.proto.Setup request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getInitializeMethod(), getCallOptions(), request);
     }
@@ -236,7 +236,7 @@ public final class LedControlGrpc {
     /**
      */
     public com.google.common.util.concurrent.ListenableFuture<com.google.protobuf.BoolValue> initialize(
-        com.paperatus.matrix.proto.LedData request) {
+        com.paperatus.matrix.proto.Setup request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getInitializeMethod(), getCallOptions()), request);
     }
@@ -271,7 +271,7 @@ public final class LedControlGrpc {
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
         case METHODID_INITIALIZE:
-          serviceImpl.initialize((com.paperatus.matrix.proto.LedData) request,
+          serviceImpl.initialize((com.paperatus.matrix.proto.Setup) request,
               (io.grpc.stub.StreamObserver<com.google.protobuf.BoolValue>) responseObserver);
           break;
         case METHODID_WRITE_DATA:

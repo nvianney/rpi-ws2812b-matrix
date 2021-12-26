@@ -9,12 +9,22 @@ import "google/protobuf/empty.proto";
 import "google/protobuf/wrappers.proto";
 
 service LedControl {
-  rpc Initialize (LedData) returns (google.protobuf.BoolValue) {}
+  rpc Initialize (Setup) returns (google.protobuf.BoolValue) {}
   rpc WriteData (LedData) returns (google.protobuf.Empty) {}
 }
 
 message LedData {
-  bytes data = 1;
+  repeated uint32 data = 1;
   uint32 width = 2;
   uint32 height = 3;
 }
+
+message Setup {
+  LedData ledData = 1;
+  Mapping mapping = 2;
+}
+
+message Mapping {
+  repeated uint32 data = 1;
+}
+

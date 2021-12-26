@@ -18,7 +18,7 @@ class LedControlStub(object):
         """
         self.Initialize = channel.unary_unary(
                 '/paperatus.LedControl/Initialize',
-                request_serializer=led__control__pb2.LedData.SerializeToString,
+                request_serializer=led__control__pb2.Setup.SerializeToString,
                 response_deserializer=google_dot_protobuf_dot_wrappers__pb2.BoolValue.FromString,
                 )
         self.WriteData = channel.unary_unary(
@@ -48,7 +48,7 @@ def add_LedControlServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'Initialize': grpc.unary_unary_rpc_method_handler(
                     servicer.Initialize,
-                    request_deserializer=led__control__pb2.LedData.FromString,
+                    request_deserializer=led__control__pb2.Setup.FromString,
                     response_serializer=google_dot_protobuf_dot_wrappers__pb2.BoolValue.SerializeToString,
             ),
             'WriteData': grpc.unary_unary_rpc_method_handler(
@@ -78,7 +78,7 @@ class LedControl(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/paperatus.LedControl/Initialize',
-            led__control__pb2.LedData.SerializeToString,
+            led__control__pb2.Setup.SerializeToString,
             google_dot_protobuf_dot_wrappers__pb2.BoolValue.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

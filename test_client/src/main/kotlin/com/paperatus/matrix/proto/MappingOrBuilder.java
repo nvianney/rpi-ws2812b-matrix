@@ -3,8 +3,8 @@
 
 package com.paperatus.matrix.proto;
 
-public interface LedDataOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:paperatus.LedData)
+public interface MappingOrBuilder extends
+    // @@protoc_insertion_point(interface_extends:paperatus.Mapping)
     com.google.protobuf.MessageOrBuilder {
 
   /**
@@ -23,16 +23,4 @@ public interface LedDataOrBuilder extends
    * @return The data at the given index.
    */
   int getData(int index);
-
-  /**
-   * <code>uint32 width = 2;</code>
-   * @return The width.
-   */
-  int getWidth();
-
-  /**
-   * <code>uint32 height = 3;</code>
-   * @return The height.
-   */
-  int getHeight();
 }

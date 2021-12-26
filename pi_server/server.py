@@ -5,8 +5,8 @@ import led_control_pb2_grpc
 import google
 import traceback
 
-import board
-import neopixel
+#import board
+#import neopixel
 
 class LedMatrix:
     def __init__(self, width, height):
@@ -38,30 +38,33 @@ class Color:
             (i >> 0) & mask
         )
 
+    def __str__(self):
+        return "(%d, %d, %d)" % (self.r, self.g, self.b)
+
 class LedControl(led_control_pb2_grpc.LedControlServicer):
 
-    def mapToIntArray(self, byteString):
-        out = [0] * int(len(byteString) / 4)
+    # def mapToIntArray(self, byteString):
+    #     out = [0] * int(len(byteString) / 4)
 
-        for i in range(len(out)):
-            # little endian
-            num =                               \
-                (byteString[(i*4)+0] << 0) |    \
-                (byteString[(i*4)+1] << 8) |    \
-                (byteString[(i*4)+2] << 16) |   \
-                (byteString[(i*4)+3] << 24)
-            out[i] = num
+    #     for i in range(len(out)):
+    #         # little endian
+    #         num =                               \
+    #             (byteString[(i*4)+0] << 0) |    \
+    #             (byteString[(i*4)+1] << 8) |    \
+    #             (byteString[(i*4)+2] << 16) |   \
+    #             (byteString[(i*4)+3] << 24)
+    #         out[i] = num
 
-        return out
+    #     return out
 
     def ledDataToMatrix(self, ledData):
-        intArray = self.mapToIntArray(request.data)
-        matrix = LedMatrix(request.width, request.height)
+        # intArray = self.mapToIntArray(request.data)
+        matrix = LedMatrix(ledData.width, ledData.height)
 
-        for y in range(request.height):
-            for x in range(request.width):
-                i = y * request.height + x
-                color = Color.fromInt(intArray[i])
+        for y in range(ledData.height):
+            for x in range(ledData.width):
+                i = y * ledData.height + x
+                color = Color.fromInt(ledData.data[i])
                 matrix.set(y, x, color)
 
         return matrix
@@ -73,6 +76,7 @@ class LedControl(led_control_pb2_grpc.LedControlServicer):
 
     def WriteData(self, request, context):
         matrix = self.ledDataToMatrix(request)
+        print(matrix.get(0, 0))
 
         return google.protobuf.empty_pb2.Empty()
 
