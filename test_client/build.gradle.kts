@@ -27,6 +27,7 @@ dependencies {
     implementation(libs.grpc.stub)
     implementation(libs.google.protobuf.java.util)
     implementation(libs.google.protobuf.kotlin)
+    implementation(libs.kotlin.coroutines)
     runtimeOnly(libs.grpc.netty)
     testImplementation(kotlin("test"))
 }

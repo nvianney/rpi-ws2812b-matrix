@@ -3,6 +3,7 @@ package com.paperatus.matrix.client
 import com.paperatus.matrix.client.model.Color
 import com.paperatus.matrix.client.model.LedMapping
 import com.paperatus.matrix.client.model.LedMatrix
+import kotlinx.coroutines.delay
 
 val mapping = LedMapping().also { mapping ->
     mapping[0, 0] = 0
@@ -32,15 +33,28 @@ val mapping = LedMapping().also { mapping ->
     mapping[1, 11] = 12
 }
 
+
 suspend fun main(array: Array<String>) {
     val matrix = LedMatrix(12, 2)
-    matrix[0, 0] = Color(255, 0, 255)
-    matrix[1, 1] = Color(255, 127, 127)
-    matrix[1, 11] = Color(0, 50, 127)
+    matrix[0, 5] = Color(255, 0, 255)
+    matrix[1, 7] = Color(255, 0, 255)
 
     LedControlClient("192.168.0.232", 50051).use { client ->
         with(client) {
             initialize(matrix, mapping)
+
+            var time = 0.0f
+
+            while (true) {
+                val color = java.awt.Color.HSBtoRGB(time / 5.0f, 1.0f, 1.0f)
+                val co = Color(color)
+                matrix[0, 5] = co
+                matrix[1, 7] = co
+
+                sendLedMatrix(matrix)
+                delay(20)
+                time += 0.02f
+            }
         }
     }
 }
