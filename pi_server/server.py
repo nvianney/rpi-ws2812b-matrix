@@ -74,7 +74,7 @@ class LedControl(led_control_pb2_grpc.LedControlServicer):
 
         for y in range(ledData.height):
             for x in range(ledData.width):
-                i = y * ledData.height + x
+                i = y * ledData.width + x
                 color = Color.fromInt(ledData.data[i])
                 matrix.set(y, x, color)
 
@@ -84,7 +84,7 @@ class LedControl(led_control_pb2_grpc.LedControlServicer):
         ledMapping = LedMapping()
         data = mapping.data
 
-        assert len(data) % 3 == 0
+        assert len(data) % 3 == 0, "Invalid mapping data. Not multiples of 3"
 
         for i in range(int(len(data) / 3)):
             ledMapping.set(data[i * 3 + 0], data[i * 3 + 1], data[i * 3 + 2])
@@ -102,6 +102,8 @@ class LedControl(led_control_pb2_grpc.LedControlServicer):
     def Initialize(self, request, context):
         self.matrix = self.ledDataToMatrix(request.ledData)
         self.mapping = self.mappingToLedMapping(request.mapping)
+
+        assert len(self.matrix.data) == len(self.mapping.data), "Size of mapping != number of LEDs"
 
         try:
             self.pixels = neopixel.NeoPixel(
