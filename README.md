@@ -35,5 +35,17 @@ same column, but now goes backward). `WriteData` only takes in the LED data.
 The +5V line of the LEDs should be connected to a 5V power supply capable of powering all LEDs. The program is currently configured to write data to GPIO 18.
 The data line input should be connected to GPIO 18. GND of the Raspberry Pi and the power supply should be joined.
 
+## Issues
+
+**Issue: Running the server raises ``ImportError: /lib/arm-linux-gnueabihf/libc.so.6: version `GLIBC_2.33' not found``**
+**Solution:** Install `grpcio` and `grpcio-tools` with the flag `--no-binary :all:`.
+
+**I: Initialization over gRPC raises `RuntimeError: NeoPixel support requires running with sudo, please try again!` on the server**
+**S:** Run the server with sudo permissions.
+
+**I: Initialization / Writing over gRPC raises `RuntimeError: ws2811_init failed with code -11 (Selected GPIO not possible)`**
+**S:** Verify that the GPIO pin selected supports PWM.
+
+
 ## Resources
 * [WS2812B data sheet](https://cdn-shop.adafruit.com/datasheets/WS2812.pdf)
