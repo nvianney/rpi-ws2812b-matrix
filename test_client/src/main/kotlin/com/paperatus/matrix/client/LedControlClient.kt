@@ -33,7 +33,6 @@ class LedControlClient(address: String, port: Int) : Closeable {
             mapping = ledMapping.asMapping()
         }
         val response = stub.initialize(request)
-        println(response.value)
     }
 
     suspend fun sendLedMatrix(matrix: LedMatrix) {
