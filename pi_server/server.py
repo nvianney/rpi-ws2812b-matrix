@@ -97,6 +97,8 @@ class LedControl(led_control_pb2_grpc.LedControlServicer):
                 idx = self.mapping.get(r, c)
                 self.pixels[idx] = self.matrix.get(r, c).tuple()
 
+        self.pixels.write()
+
     def Initialize(self, request, context):
         self.matrix = self.ledDataToMatrix(request.ledData)
         self.mapping = self.mappingToLedMapping(request.mapping)
@@ -108,6 +110,8 @@ class LedControl(led_control_pb2_grpc.LedControlServicer):
                 auto_write=False,
                 pixel_order = neopixel.GRB
             )
+            self.write()
+
             return google.protobuf.wrappers_pb2.BoolValue(value=True)
 
         except:
@@ -117,7 +121,7 @@ class LedControl(led_control_pb2_grpc.LedControlServicer):
 
     def WriteData(self, request, context):
         self.matrix = self.ledDataToMatrix(request)
-        print(self.matrix.get(0, 0))
+        self.write()
 
         return google.protobuf.empty_pb2.Empty()
 
