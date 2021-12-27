@@ -7,6 +7,7 @@ import com.google.protobuf.gradle.protoc
 
 plugins {
     kotlin("jvm") version "1.6.10"
+    application
     alias(libs.plugins.google.protobuf)
 }
 
@@ -30,6 +31,10 @@ dependencies {
     implementation(libs.kotlin.coroutines)
     runtimeOnly(libs.grpc.netty)
     testImplementation(kotlin("test"))
+}
+
+application {
+    mainClass.set("com.paperatus.matrix.client.MainKt")
 }
 
 tasks.test {
