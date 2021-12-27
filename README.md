@@ -14,7 +14,8 @@ This is a barebones example project to set up a Raspberry Pi to get the WS2812B 
 ### Built with
  * Python 3.x+
  * Kotlin 1.6+ with Kotlin Coroutines
- * gRPC / Protobuf
+ * gRPC
+ * Protobuf
 
 ## Setup
 Install the required libraries from `requirements.txt` by running `pip3 install -r requirements.txt`. `protoc` should also be installed on your system
