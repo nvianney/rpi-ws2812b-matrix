@@ -8,6 +8,12 @@ data class LedMatrix(val width: Int, val height: Int) {
     val int: IntArray
         get() = IntArray(data.size) { i -> data[i].int() }
 
+    fun clear() {
+        for (i in data.indices) {
+            data[i] = Color(0, 0, 0)
+        }
+    }
+
     operator fun get(row: Int, col: Int): Color {
         return data[width * row + col]
     }
