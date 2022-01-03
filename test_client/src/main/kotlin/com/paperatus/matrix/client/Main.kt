@@ -79,39 +79,82 @@ val mapping = LedMapping().also { mapping ->
     mapping[5, 5] = 66
     mapping[5, 6] = 65
     mapping[5, 7] = 64
-    mapping[5, 8] = 62
+    mapping[5, 8] = 63
     mapping[5, 9] = 62
     mapping[5, 10] = 61
     mapping[5, 11] = 60
 }
 
+suspend fun LedControlClient.test1(matrix: LedMatrix) {
+
+    var time = 0.0f
+    var delta = 0.0f
+    var col = 0
+
+    val update = 0.05f
+
+    while (true) {
+        matrix.clear()
+
+        val color = java.awt.Color.HSBtoRGB(time / 5.0f, 1.0f, 1.0f)
+        val co = Color(color)
+        for (r in 0 until 6) {
+            matrix[r, col] = co
+        }
+
+        sendLedMatrix(matrix)
+        delay((update * 1000).toLong())
+        time += update
+
+        delta += update
+
+        if (delta >= 0.5f) {
+            col++
+            col %= 12
+            delta = 0.0f
+        }
+    }
+}
+
+suspend fun LedControlClient.test2(matrix: LedMatrix) {
+
+    var time = 0.0f
+    var delta = 0.0f
+    var idx = 0
+
+    val update = 0.05f
+
+    while (true) {
+        matrix.clear()
+
+        val color = java.awt.Color.HSBtoRGB(time / 5.0f, 1.0f, 1.0f)
+        val co = Color(color)
+
+        val r = idx / 12
+        val c = idx % 12
+        matrix[r, c] = co
+
+        sendLedMatrix(matrix)
+        delay((update * 1000).toLong())
+        time += update
+
+        delta += update
+
+        if (delta >= 0.02f) {
+            idx++
+            idx %= 12 * 6
+            delta = 0.0f
+        }
+    }
+}
 
 suspend fun main(array: Array<String>) {
     val matrix = LedMatrix(12, 6)
 
-    LedControlClient("192.168.0.232", 50051).use { client ->
-        with(client) {
-            initialize(matrix, mapping)
-
-            var time = 0.0f
-            var col = 0
-
-            while (true) {
-                matrix.clear()
-
-                val color = java.awt.Color.HSBtoRGB(time / 5.0f, 1.0f, 1.0f)
-                val co = Color(color)
-                for (r in 0 until 6) {
-                    matrix[r, col] = co
-                }
-
-                sendLedMatrix(matrix)
-                delay(20)
-                time += 0.2f
-                col++
-
-                col %= 12;
-            }
-        }
+    LedControlClient("192.168.0.171", 50051).use { client ->
+        client.initialize(matrix, mapping)
+        client.test2(matrix)
+//        matrix[4, 11] = Color(0xFFFFFF.toInt())
+        client.sendLedMatrix(matrix)
     }
 }
