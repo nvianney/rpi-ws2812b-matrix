@@ -37,6 +37,16 @@ application {
     mainClass.set("com.paperatus.matrix.client.MainKt")
 }
 
+val fatJar = task("fatJar", type = Jar::class) {
+    baseName = "${project.name}-fat"
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    manifest {
+        attributes["Main-Class"] = "com.paperatus.matrix.client.MainKt"
+    }
+    from(configurations.runtimeClasspath.get().map({ if (it.isDirectory) it else zipTree(it) }))
+    with(tasks.jar.get() as CopySpec)
+}
+
 tasks.test {
     useJUnit()
 }
